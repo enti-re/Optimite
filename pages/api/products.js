@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   } else if (req.method === "DELETE") {
     try {
       const { id } = req.query;
-      await fetch(BASE_URL + `${id}`, {
+      await fetch(BASE_URL + `${id}`, {k
         method: "DELETE",
       });
     } catch (err) {}
