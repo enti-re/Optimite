@@ -21,12 +21,5 @@ export default async function handler(req, res) {
     } catch (err) {
       res.status(500).json({ error: "failed to post data" });
     }
-  } else if (req.method === "DELETE") {
-    try {
-      const { id } = req.query;
-      await fetch(BASE_URL + `${id}`, {k
-        method: "DELETE",
-      });
-    } catch (err) {}
   }
 }
