@@ -155,7 +155,7 @@ const HomePage = () => {
         <Header appName={"PRODUCTS"}>
           <AppHeader />
         </Header>
-        <div className="grid grid-cols-4 bg-black gap-8 p-20">
+        <div className="sm:grid-cols-1 md:grid-cols-4 grid  bg-black gap-8 p-20">
           {renderProducts}
         </div>
         {isAddPopupVisible && (
