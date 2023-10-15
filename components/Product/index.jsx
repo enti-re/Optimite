@@ -13,7 +13,7 @@ const Product = ({ product, onDelete }) => {
           <img src={product.image} width={120} height={200} />
         </div>
       </Link>
-      <div className="flex flex-col justify-center items-end p-4 gap-4">
+      <div className="flex flex-col justify-center items-end p-4 gap-4 w-full h-full">
         <Link href={`/info/${product.id}`}>
           <div
             className="text-center white-space font-medium underline"
