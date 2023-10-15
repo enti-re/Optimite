@@ -16,7 +16,6 @@ export default async function handler(req, res) {
         body: data,
       });
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
       res.status(200).json(jsonResponse);
     } catch (err) {
       res.status(500).json({ error: "failed to post data" });

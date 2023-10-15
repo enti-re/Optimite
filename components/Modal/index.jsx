@@ -9,12 +9,9 @@ const Modal = ({ closeModal, children }) => {
         closeModal();
       }
     }
-
-    // Attach the event listener
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      // Clean up the event listener when the component unmounts
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, closeModal]);

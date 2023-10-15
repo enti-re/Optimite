@@ -4,6 +4,7 @@ import Product from "@/components/Product";
 import AppHeader from "@/components/AppHeader";
 import AddProductPopup from "@/components/AddProductPopup";
 import Modal from "@/components/Modal";
+import Loader from "@/components/Loader";
 
 export const HomePageContext = createContext();
 
@@ -23,7 +24,6 @@ const HomePage = () => {
     description: "",
     price: "",
   });
-  // const urlRegex = /^https?:\/\/[^\s.]+\.[^\s.]+/
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,7 +39,7 @@ const HomePage = () => {
         setError({ title: false, image: false });
         setLoader(false);
       } catch (err) {
-        // Do something
+        alert("Unable to fetch data");
       }
     };
     fetchProducts();
@@ -77,9 +77,7 @@ const HomePage = () => {
   };
 
   const handleSaveProduct = async () => {
-    let isError = false;
     if (isNaN(addProduct.price)) {
-      isError = true;
       setError((prevState) => {
         return { ...prevState, price: true };
       });
@@ -91,14 +89,11 @@ const HomePage = () => {
       body: JSON.stringify(addProduct),
     });
     const newProduct = await res.json();
-    console.log("NEW PORsdf");
-    console.log("enterinng here");
     setProducts([
       ...products,
       { ...addProduct, id: newProduct.id + addProduct.title },
     ]);
     const productArray = JSON.parse(localStorage.getItem("productArray")) ?? [];
-    console.log("Product", productArray);
     if (productArray.length > 0) {
       localStorage.setItem(
         "productArray",
@@ -146,7 +141,7 @@ const HomePage = () => {
     );
   });
 
-  if (loader) return <div className="h-screen w-screen bg-black text-white flex justify-center items-center">Loading...</div>
+  if (loader) return <Loader />;
 
   return (
     <HomePageContext.Provider
